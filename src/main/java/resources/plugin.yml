@@ -1,0 +1,15 @@
+name: Finger
+main: love.toad.Finger
+author: harrison.page
+version: 1.0
+api-version: 1.21
+commands:
+  finger:
+    description: Examine another player's inventory and status
+    usage: /finger [player]
+    permission: finger.use
+permissions:
+  finger.use:
+    description: Allows a player to use the /finger command
+    default: op
+
