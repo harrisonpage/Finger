@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #333;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 8px 0;
+        }
+
+        .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .player-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .player-info {
+            flex-grow: 1;
+        }
+
+        .player-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            margin: 4px;
+            display: flex;
+        }
+
+        .player-body-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .player-body {
+            width: 100px;
+            height: auto;
+            margin-left: 20px;
+        }
+
+        .etc {
+            font-size: 1.1em;
+            margin: 16px;
+            text-align: left;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #f39c12;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{SERVER_NAME}</h1>
+        {PLAYER_ENTRIES}
+    </div>
+
+    <div class="container">
+        <div class="etc">
+            <h2 class="highlight">Server Info</h2>
+            <ul>
+                <li> Version
+                    <ul>
+                        <li> Minecraft {SERVER_VERSION} </li>
+                        <li> Bukkit {BUKKIT_VERSION} </li>
+                    </ul>
+                <li> Uptime: {SERVER_UPTIME} </li>
+                <li> Memory
+                    <ul>
+                        <li> Max: {SERVER_MEMORY_MAX} </li>
+                        <li> Allocated: {SERVER_MEMORY_ALLOCATED} </li>
+                        <li> Free: {SERVER_MEMORY_FREE} </li>
+                        <li> Used: {SERVER_MEMORY_USED} </li>
+                    </ul>
+                </li>
+                <li> Updated: {TIMESTAMP} </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="etc">
+            <h2 class="highlight">Credits</h2>
+            <ul>
+                <li> Avatars by <a href="https://crafatar.com">Crafatar</a> </li>
+                <li> <a href="{GITHUB_URL}">{VERSION_STRING}</a> by <a href="https://harrison.page">harrison.page</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!-- Player card template -->
+<script id="player-card-template" type="text/template">
+    <div class="player-card">
+        <div class="player-info">
+            <h2 class='highlight'>{PLAYER_NAME} (Level {LEVEL})</h2>
+            <img src="https://crafatar.com/avatars/{UUID}" alt="{PLAYER_NAME}'s avatar" class="player-avatar">
+            <p><strong>Location:</strong> {WORLD} ({X}, {Y}, {Z}) {GAMEMODE}</p>
+            <p><strong>Ping:</strong> {PING}ms | <strong>Idle:</strong> {IDLE}</p>
+            <p><strong>Health:</strong> {HEALTH}</p>
+            <p><strong>Hunger:</strong> {HUNGER}</p>
+            <p><strong>Stats:</strong>
+                <ul>
+                    <li> <span class='highlight'>Walked: </span> {WALKED} meters</li>
+                    <li> <span class='highlight'>Blocks Mined:</span> {BLOCKS_MINED}</li>
+                </ul>
+            </p>
+            <p><strong>Combat:</strong>
+                <ul>
+                    <li><span class='highlight'>Kills:</span> {MOBS_KILLED}</li>
+                    <li><span class='highlight'>Damage Dealt:</span> {DAMAGE_DEALT}</li>
+                    <li><span class='highlight'>Deaths:</span> {DEATHS}</li>
+                </ul>
+            </p>
+            <p><strong>Holding:</strong> {HELD_ITEM}</p>
+            <p><strong>Armor:</strong></p>
+            <ul>
+                <li><span class='highlight'>Helmet:</span> {HELMET}</li>
+                <li><span class='highlight'>Chestplate:</span> {CHESTPLATE}</li>
+                <li><span class='highlight'>Leggings:</span> {LEGGINGS}</li>
+                <li><span class='highlight'>Boots:</span> {BOOTS}</li>
+            </ul>
+        </div>
+        <div class="player-body-container">
+            <img src="https://crafatar.com/renders/body/{UUID}" alt="{PLAYER_NAME}'s full body" class="player-body">
+        </div>
+    </div>
+</script>
