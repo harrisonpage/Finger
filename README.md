@@ -48,7 +48,7 @@ When the server starts, these files will be written to the `plugins/Finger` fold
 
 If you are using a permissions plugin, you can allow access to `/finger` using the `finger.use` permission. By default, only operators can use this command. The server must be restarted after changes are made.
 
-## Web Page
+## 🕷️ Web Page
 
 This is an optional feature that will write a flat HTML file to disk every minute.
 
@@ -69,10 +69,12 @@ The process running Minecraft must have write access to the specified directory.
 You can also optionally set the `server_name` option e.g.
 
 ```
-server_name My Minecraft Server
+server_name: My Minecraft Server
 ```
 
-## Template Placeholders
+This maps to the `{SERVER_NAME}` placeholder in the template.
+
+## 📝 Template Placeholders
 
 The HTML template can be modified as you like. All placeholders are optional, removing them will not cause problems.
 
@@ -124,7 +126,7 @@ These placeholders apply **to the entire server** and are not player-specific.
 | `{TIMESTAMP}` | The current time when the report was generated |
 | `{VERSION_STRING}` | The version of the `Finger` plugin |
 
-## Under the Hood
+## 🚙 Under the Hood
 
 Every minute, the JSON file `plugins/Finger/player_data.json` is written. The format of this file is:
 
