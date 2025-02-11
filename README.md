@@ -2,6 +2,8 @@
 
 Have you ever wanted to finger your friends? This Minecraft plugin will display information about another player similar to [finger(1)](https://manpage.me/?finger) in [UNIX](https://www.youtube.com/watch?v=dFUlAQZB9Ng).
 
+For admins, you can type `finger` from the console to view all users and idle times.
+
 ## Usage
 
 ```
