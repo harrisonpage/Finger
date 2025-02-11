@@ -36,7 +36,7 @@ mvn package
 ## Installation
 
 ```
-cp target/Finger-1.0.0.jar ~/minecraft/plugins
+cp target/Finger-1.0.1.jar ~/minecraft/plugins
 ```
 
 ## Setup

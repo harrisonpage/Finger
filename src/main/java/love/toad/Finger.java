@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class Finger extends JavaPlugin {
     private static String PLUGIN_NAME = "Finger";
-    private static String VERSION = "1.0.0";
+    private static String VERSION = "1.0.1";
     private static String VERSION_STRING = PLUGIN_NAME + '/' + VERSION;
     private static String GITHUB_URL = "https://github.com/harrisonpage/Finger";
     private final File dataFile = new File(getDataFolder(), "player_data.json");
@@ -79,8 +79,16 @@ public class Finger extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+        // show limited report on console
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.RED + "This command can only be used by players");
+            long idleTime;
+            String idleStatus;
+            for (Player target : Bukkit.getOnlinePlayers()) {
+                idleTime = System.currentTimeMillis() - playerActivityListener.lastActiveTime.getOrDefault(target.getUniqueId(), System.currentTimeMillis());
+                idleStatus = idleTime > 0 ? (idleTime / 60000) + "m" : "Active";
+                sender.sendMessage(target.getName() + " idle " + idleStatus);
+            }
             return true;
         }
 
